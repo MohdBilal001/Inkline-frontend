@@ -2,7 +2,7 @@
 // Dev server proxies /api -> http://localhost:8080 (see vite.config.js),
 // and the backend's CORS config already allows http://localhost:5173.
 
-const BASE_URL = '/api'
+const BASE_URL = import.meta.env.VITE_API_ORIGIN || '/api'
 const TOKEN_KEY = 'inkline_token'
 const USER_KEY = 'inkline_user'
 
@@ -197,18 +197,10 @@ export function logout() {
 
 export function loginWithGoogle() {
   window.location.href =
-    'http://localhost:8080/oauth2/authorization/google'
+    `${BASE_URL}/oauth2/authorization/google`
 }
 
-export function loginWithGitHub() {
-  window.location.href =
-    'http://localhost:8080/oauth2/authorization/github'
-}
 
-export function loginWithFacebook() {
-  window.location.href =
-    'http://localhost:8080/oauth2/authorization/facebook'
-}
 // ---- users ---------------------------------------------------------------
 // Backend: GET /api/users/{id}, GET /api/users/username/{username}
 

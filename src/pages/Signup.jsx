@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { signup, loginWithGoogle, loginWithGitHub, loginWithFacebook } from '../api/client'
+import { signup, loginWithGoogle } from '../api/client'
 
 export default function Signup() {
   const [form, setForm] = useState({ name: '', username: '', email: '', password: '' })

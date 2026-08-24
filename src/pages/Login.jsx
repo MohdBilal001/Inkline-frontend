@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login, loginWithGoogle, loginWithGitHub, loginWithFacebook } from '../api/client'
-
+import { login, loginWithGoogle } from '../api/client'
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
