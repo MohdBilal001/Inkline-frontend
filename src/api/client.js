@@ -2,7 +2,8 @@
 // Dev server proxies /api -> http://localhost:8080 (see vite.config.js),
 // and the backend's CORS config already allows http://localhost:5173.
 
-const BASE_URL = import.meta.env.VITE_API_ORIGIN || '/api'
+const API_ORIGIN = import.meta.env.VITE_API_ORIGIN || 'http://localhost:8080'
+const BASE_URL = `${API_ORIGIN}/api`
 const TOKEN_KEY = 'inkline_token'
 const USER_KEY = 'inkline_user'
 
@@ -44,7 +45,7 @@ async function request(path, options = {}) {
   const text = await res.text()
   if (!text) return null
   try {
-    return JSON.parse(text) 
+    return JSON.parse(text)
   } catch {
     return text
   }
@@ -197,7 +198,7 @@ export function logout() {
 
 export function loginWithGoogle() {
   window.location.href =
-    `${BASE_URL}/oauth2/authorization/google`
+    `${API_ORIGIN}/oauth2/authorization/google`
 }
 
 
@@ -364,7 +365,7 @@ export async function uploadArticleCover(file) {
     try {
       const parsed = JSON.parse(body)
       message = parsed?.message || parsed?.error || parsed?.detail || body
-    } catch {}
+    } catch { }
     throw new Error(String(message || `Request failed with status ${res.status}`).trim())
   }
 
