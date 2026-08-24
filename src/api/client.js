@@ -3,7 +3,6 @@
 // and the backend's CORS config already allows http://localhost:5173.
 
 const API_ORIGIN = import.meta.env.VITE_API_ORIGIN || 'http://localhost:8080'
-const BASE_URL = `${API_ORIGIN}/api`
 const TOKEN_KEY = 'inkline_token'
 const USER_KEY = 'inkline_user'
 
